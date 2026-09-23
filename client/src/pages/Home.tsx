@@ -22,8 +22,34 @@ import { NotificationDrawer } from "@/components/NotificationDrawer";
 import { AuthModal } from "@/components/AuthModal";
 import { LandingPage } from "@/components/LandingPage";
 import { EmptyState } from "@/components/EmptyState";
-import { useAuth } from "@/_core/hooks/useAuth";
 import { toast } from "sonner";
+
+function useAuth() {
+  const [user, setUser] = useState<{ name: string; email: string; role: string } | null>(() => {
+    try {
+      const stored = localStorage.getItem("mendsync-auth-user");
+      return stored ? JSON.parse(stored) : {
+        name: "Dr. Alex Rivera, MD",
+        email: "alex.rivera@mendsync.in",
+        role: "Clinical Specialist"
+      };
+    } catch {
+      return null;
+    }
+  });
+
+  const logout = () => {
+    localStorage.removeItem("mendsync-auth-user");
+    setUser(null);
+  };
+
+  const loginUser = (userData: { name: string; email: string; role: string }) => {
+    localStorage.setItem("mendsync-auth-user", JSON.stringify(userData));
+    setUser(userData);
+  };
+
+  return { user, logout, loginUser };
+}
 
 const initialCases = generateBatch(42, 48);
 
