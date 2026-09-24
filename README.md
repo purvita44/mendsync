@@ -105,4 +105,4 @@ Open [http://localhost:5173](http://localhost:5173) to view MendSync in your bro
 
 ## 📜 License
 
-MIT License © MendSync Inc.
+MIT License © MendSync Inc. 
