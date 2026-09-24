@@ -99,7 +99,7 @@ pnpm test
 pnpm dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) to view MendSync in your browser.
+Open [http://localhost:5173](https://mendsync-gqag.vercel.app/) to view MendSync in your browser.
 
 ---
 
